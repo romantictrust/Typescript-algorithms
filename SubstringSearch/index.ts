@@ -1,25 +1,32 @@
 import fs from "fs";
+import KMP from "./KMP";
 
 export default function () {
-  const subString: string = "война";
+  const subString: string = "люблю";
   const fileContent: string = fs.readFileSync(
-    "./SubstringSearch/WarAndPeace.txt",
+    "./SubstringSearch/input/WarAndPeace.txt",
     "utf8"
   );
   const fileContentLines: string[] = fileContent.split("\n").filter(Boolean);
-  let subStringsFound: number[] = findSubstringDefaultTool(
-    fileContentLines,
-    subString
-  );
+  let subStringsFound: {
+    line?: number;
+    index?: number;
+  }[] = KMP(fileContentLines, subString);
 
-  fs.writeFileSync("./SubstringSearch/linesFoundNumbers.txt", subStringsFound);
+  fs.writeFileSync(
+    "./SubstringSearch/output/linesFoundNumbers.txt",
+    JSON.stringify(subStringsFound)
+  );
 }
 
 const findSubstringDefaultTool = (linesArr: string[], subString: string) => {
-  let subStringsFound: number[] = [];
+  let subStringsFound: {
+    line?: number;
+    index?: number;
+  }[] = [];
   for (let i = 0; i < linesArr.length; i++) {
     if (linesArr[i].includes(subString)) {
-      subStringsFound.push(++i);
+      subStringsFound.push({ line: i });
     }
   }
   return subStringsFound;
