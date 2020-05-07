@@ -1,0 +1,20 @@
+{
+  "name": "typescript-algorithms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "typescript": "^4.0.0-dev.20200507"
+  },
+  "devDependencies": {
+    "@types/node": "^13.13.5",
+    "nodemon": "^2.0.3",
+    "ts-node": "^8.10.1"
+  },
+  "scripts": {
+    "start": "ts-node ./index.ts",
+    "dev": "nodemon --exec ts-node ./index.ts"
+  },
+  "author": "",
+  "license": "ISC"
+}
