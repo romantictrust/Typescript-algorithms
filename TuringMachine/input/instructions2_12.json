@@ -1,0 +1,161 @@
+[
+    {
+        "instructions": [
+            {
+                "precondition": "a",
+                "postcondition": "a",
+                "direction": "Right",
+                "successor": 0
+            },
+            {
+                "precondition": "b",
+                "postcondition": "b",
+                "direction": "Right",
+                "successor": 0
+            },
+            {
+                "precondition": "_",
+                "postcondition": "_",
+                "direction": "Left",
+                "successor": "1"
+            }
+        ]
+    },
+    {
+        "instructions": [
+            {
+                "precondition": "a",
+                "postcondition": "_",
+                "direction": "Right",
+                "successor": "2"
+            },
+            {
+                "precondition": "b",
+                "postcondition": "_",
+                "direction": "Right",
+                "successor": "3"
+            },
+            {
+                "precondition": "_",
+                "postcondition": "_",
+                "direction": "Right",
+                "successor": "6"
+            }
+        ]
+    },
+    {
+        "instructions": [
+            {
+                "precondition": "_",
+                "postcondition": "|",
+                "direction": "Left",
+                "successor": "4"
+            },
+            {
+                "precondition": "|",
+                "postcondition": "|",
+                "direction": "Right",
+                "successor": "2"
+            },
+            {
+                "precondition": "b",
+                "postcondition": "b",
+                "direction": "Right",
+                "successor": "2"
+            },
+            {
+                "precondition": "a",
+                "postcondition": "a",
+                "direction": "Right",
+                "successor": "2"
+            }
+        ]
+    },
+    {
+        "instructions": [
+            {
+                "precondition": "_",
+                "postcondition": "|",
+                "direction": "Left",
+                "successor": "5"
+            },
+            {
+                "precondition": "|",
+                "postcondition": "|",
+                "direction": "Right",
+                "successor": "3"
+            },
+            {
+                "precondition": "b",
+                "postcondition": "b",
+                "direction": "Right",
+                "successor": "3"
+            },
+            {
+                "precondition": "a",
+                "postcondition": "a",
+                "direction": "Right",
+                "successor": "3"
+            }
+        ]
+    },
+    {
+        "instructions": [
+            {
+                "precondition": "_",
+                "postcondition": "a",
+                "direction": "Left",
+                "successor": "1"
+            },
+            {
+                "precondition": "|",
+                "postcondition": "|",
+                "direction": "Left",
+                "successor": "4"
+            },
+            {
+                "precondition": "b",
+                "postcondition": "b",
+                "direction": "Left",
+                "successor": "4"
+            },
+            {
+                "precondition": "a",
+                "postcondition": "a",
+                "direction": "Left",
+                "successor": "4"
+            }
+        ]
+    },
+    {
+        "instructions": [
+            {
+                "precondition": "_",
+                "postcondition": "b",
+                "direction": "Left",
+                "successor": "1"
+            },
+            {
+                "precondition": "|",
+                "postcondition": "|",
+                "direction": "Left",
+                "successor": "5"
+            },
+            {
+                "precondition": "b",
+                "postcondition": "b",
+                "direction": "Left",
+                "successor": "5"
+            },
+            {
+                "precondition": "a",
+                "postcondition": "a",
+                "direction": "Left",
+                "successor": "5"
+            }
+        ]
+    },
+    {
+        "instructions": []
+    }
+]

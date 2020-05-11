@@ -12,7 +12,14 @@ const turingMachine: TuringMachine = new TuringMachine(tape, stateManager);
 
 export default () => {
   let pointArrow: string[] = [];
-  const word: string = "abbabac";
+
+  // 1.11. Г={a,b,c}. Заменить в P каждое вхождение ab на c.
+  // const word: string = "abbabac";
+  // const instructionsUrl: string = "./TuringMachine/input/instructions1_11.json";
+
+  // 2.12. Г={a,b}. Приписать справа к слову P столько палочек, сколько всего символов входит в P (например: babb → babb||||).
+  const word: string = "babb"
+  const instructionsUrl: string = "./TuringMachine/input/instructions2_12.json";
 
   const subscription: Subscription = turingMachine
     .observeState()
@@ -28,7 +35,7 @@ export default () => {
     });
 
   const instructionsJson: string = fs.readFileSync(
-    "./TuringMachine/input/instructions1_11.json",
+    instructionsUrl,
     "utf8"
   );
 
