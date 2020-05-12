@@ -22,7 +22,7 @@
          {
             "precondition":"_",
             "postcondition":"_",
-            "direction":"Right",
+            "direction":"Left",
             "successor":"3" 
          }
       ]
@@ -33,7 +33,7 @@
             "precondition":"a",
             "postcondition":"a",
             "direction":"Right",
-            "successor":"0"
+            "successor":"1"
          },
          {
             "precondition":"b",
@@ -49,8 +49,8 @@
          },
          {
             "precondition":"_",
-            "postcondition":"",
-            "direction":"Right",
+            "postcondition":"_",
+            "direction":"Left",
             "successor":"3" 
          }
       ]
@@ -74,6 +74,12 @@
             "postcondition":"c",
             "direction":"Right",
             "successor":"0"
+         },
+         {
+            "precondition":"_",
+            "postcondition":"_",
+            "direction":"Left",
+            "successor":"3" 
          }
       ]
    },

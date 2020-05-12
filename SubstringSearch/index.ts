@@ -2,6 +2,7 @@ import fs from "fs";
 import KMP from "./KMP";
 
 export default function () {
+  console.log(">> Program starts <<");
   const subString: string = "люблю";
   const fileContent: string = fs.readFileSync(
     "./SubstringSearch/input/WarAndPeace.txt",
@@ -17,6 +18,7 @@ export default function () {
     "./SubstringSearch/output/linesFoundNumbers.txt",
     JSON.stringify(subStringsFound)
   );
+  console.log(`>> Program finished <<`);
 }
 
 const findSubstringDefaultTool = (linesArr: string[], subString: string) => {

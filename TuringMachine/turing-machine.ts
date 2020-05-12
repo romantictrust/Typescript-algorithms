@@ -8,7 +8,6 @@ import StateManager from "./state-manager";
 import Tape from "./tape";
 
 export default class TuringMachine {
-  private paused: boolean = false;
   private tape: Tape;
   private stateManager: StateManager;
   private stepDelay: number;
@@ -55,14 +54,6 @@ export default class TuringMachine {
     return this.tapeSubject.asObservable();
   }
 
-  public pause(): void {
-    this.paused = true;
-  }
-
-  public unpause(): void {
-    this.paused = false;
-  }
-
   public reset(): void {
     this.tape.reset();
     this.stateManager.reset();
@@ -73,9 +64,9 @@ export default class TuringMachine {
 
   public step(): void {
     if (!this.subscription.closed) {
-      this.performStep(true);
+      this.performStep();
       if (this.currentState === 4) {
-        this.performStep(true);
+        this.performStep();
       }
     }
   }
@@ -84,8 +75,7 @@ export default class TuringMachine {
     this.subscription = interval(this.stepDelay)
       .pipe(tap(() => this.performStep()))
       .subscribe(
-        // () => console.debug("step was performed"),
-       () => (error: Error) => this.handleError(error)
+        () => (error: Error) => this.handleError(error)
       );
   }
 
@@ -137,11 +127,9 @@ export default class TuringMachine {
     }
   }
 
-  private performStep(force: boolean = false): void {
-    if (!this.paused || force) {
+  private performStep(): void {
       this.steps.get(this.currentState)!();
       this.currentState < 4 ? ++this.currentState : (this.currentState = 0);
-    }
   }
 
   private handleError(error: Error): void {
