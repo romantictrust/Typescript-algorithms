@@ -65,18 +65,13 @@ export default class TuringMachine {
   public step(): void {
     if (!this.subscription.closed) {
       this.performStep();
-      if (this.currentState === 4) {
-        this.performStep();
-      }
     }
   }
 
   public run(): void {
     this.subscription = interval(this.stepDelay)
       .pipe(tap(() => this.performStep()))
-      .subscribe(
-        () => (error: Error) => this.handleError(error)
-      );
+      .subscribe(() => (error: Error) => this.handleError(error));
   }
 
   private readSymbol(): void {
@@ -128,8 +123,8 @@ export default class TuringMachine {
   }
 
   private performStep(): void {
-      this.steps.get(this.currentState)!();
-      this.currentState < 4 ? ++this.currentState : (this.currentState = 0);
+    this.steps.get(this.currentState)!();
+    this.currentState < 4 ? ++this.currentState : (this.currentState = 0);
   }
 
   private handleError(error: Error): void {

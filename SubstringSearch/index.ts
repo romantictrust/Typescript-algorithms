@@ -21,15 +21,15 @@ export default function () {
   console.log(`>> Program finished <<`);
 }
 
-const findSubstringDefaultTool = (linesArr: string[], subString: string) => {
-  let subStringsFound: {
-    line?: number;
-    index?: number;
-  }[] = [];
-  for (let i = 0; i < linesArr.length; i++) {
-    if (linesArr[i].includes(subString)) {
-      subStringsFound.push({ line: i });
-    }
-  }
-  return subStringsFound;
-};
+// const findSubstringDefaultTool = (linesArr: string[], subString: string) => {
+//   let subStringsFound: {
+//     line?: number;
+//     index?: number;
+//   }[] = [];
+//   for (let i = 0; i < linesArr.length; i++) {
+//     if (linesArr[i].includes(subString)) {
+//       subStringsFound.push({ line: i });
+//     }
+//   }
+//   return subStringsFound;
+// };
