@@ -23,7 +23,7 @@
             "precondition": "_",
             "postcondition": "_",
             "direction": "Left",
-            "successor": "3"
+            "successor": "11"
          }
       ]
    },
@@ -51,7 +51,7 @@
             "precondition": "_",
             "postcondition": "_",
             "direction": "Left",
-            "successor": "3"
+            "successor": "11"
          }
       ]
    },
@@ -59,15 +59,15 @@
       "instructions": [
          {
             "precondition": "a",
-            "postcondition": "",
+            "postcondition": "c",
             "direction": "Right",
             "successor": "2"
          },
          {
             "precondition": "b",
-            "postcondition": "c",
+            "postcondition": "_",
             "direction": "Right",
-            "successor": "0"
+            "successor": "3"
          },
          {
             "precondition": "c",
@@ -79,7 +79,195 @@
             "precondition": "_",
             "postcondition": "_",
             "direction": "Left",
+            "successor": "11"
+         }
+      ]
+   },
+   {
+      "instructions": [
+         {
+            "precondition": "a",
+            "postcondition": "_",
+            "direction": "Left",
+            "successor": "4"
+         },
+         {
+            "precondition": "b",
+            "postcondition": "_",
+            "direction": "Left",
+            "successor": "5"
+         },
+         {
+            "precondition": "c",
+            "postcondition": "_",
+            "direction": "Left",
+            "successor": "6"
+         },
+         {
+            "precondition": "_",
+            "postcondition": "_",
+            "direction": "Right",
+            "successor": "9"
+         }
+      ]
+   },
+   {
+      "instructions": [
+         {
+            "precondition": "_",
+            "postcondition": "a",
+            "direction": "Right",
             "successor": "3"
+         },
+         {
+            "precondition": "_",
+            "postcondition": "_",
+            "direction": "Left",
+            "successor": "7"
+         }
+      ]
+   },
+   {
+      "instructions": [
+         {
+            "precondition": "_",
+            "postcondition": "b",
+            "direction": "Right",
+            "successor": "3"
+         },
+         {
+            "precondition": "_",
+            "postcondition": "_",
+            "direction": "Left",
+            "successor": "7"
+         }
+      ]
+   },
+   {
+      "instructions": [
+         {
+            "precondition": "_",
+            "postcondition": "c",
+            "direction": "Right",
+            "successor": "3"
+         },
+         {
+            "precondition": "_",
+            "postcondition": "_",
+            "direction": "Left",
+            "successor": "7"
+         }
+      ]
+   },
+   {
+      "instructions": [
+         {
+            "precondition": "a",
+            "postcondition": "a",
+            "direction": "Left",
+            "successor": "7"
+         },
+         {
+            "precondition": "b",
+            "postcondition": "b",
+            "direction": "Left",
+            "successor": "7"
+         },
+         {
+            "precondition": "c",
+            "postcondition": "c",
+            "direction": "Left",
+            "successor": "7"
+         },
+         {
+            "precondition": "_",
+            "postcondition": "_",
+            "direction": "Right",
+            "successor": "0"
+         }
+      ]
+   },
+   {
+      "instructions": [
+         {
+            "precondition": "a",
+            "postcondition": "_",
+            "direction": "Left",
+            "successor": "4"
+         },
+         {
+            "precondition": "b",
+            "postcondition": "_",
+            "direction": "Left",
+            "successor": "5"
+         },
+         {
+            "precondition": "c",
+            "postcondition": "_",
+            "direction": "Left",
+            "successor": "6"
+         },
+         {
+            "precondition": "_",
+            "postcondition": "_",
+            "direction": "Left",
+            "successor": "3"
+         }
+      ]
+   },
+   {
+      "instructions": [
+         {
+            "precondition": "a",
+            "postcondition": "_",
+            "direction": "Left",
+            "successor": "4"
+         },
+         {
+            "precondition": "b",
+            "postcondition": "_",
+            "direction": "Left",
+            "successor": "5"
+         },
+         {
+            "precondition": "c",
+            "postcondition": "_",
+            "direction": "Left",
+            "successor": "6"
+         },
+         {
+            "precondition": "_",
+            "postcondition": "_",
+            "direction": "Right",
+            "successor": "10"
+         }
+      ]
+   },
+   {
+      "instructions": [
+         {
+            "precondition": "a",
+            "postcondition": "a",
+            "direction": "Left",
+            "successor": "7"
+         },
+         {
+            "precondition": "b",
+            "postcondition": "b",
+            "direction": "Left",
+            "successor": "7"
+         },
+         {
+            "precondition": "c",
+            "postcondition": "c",
+            "direction": "Left",
+            "successor": "7"
+         },
+         {
+            "precondition": "_",
+            "postcondition": "_",
+            "direction": "Left",
+            "successor": "10"
          }
       ]
    },

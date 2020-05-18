@@ -15,12 +15,12 @@ export default () => {
   let pointArrow: string[] = [];
 
   // 1.11. Г={a,b,c}. Заменить в P каждое вхождение ab на c.
-  // const word: string = "cababc";
-  // const instructionsUrl: string = "./TuringMachine/input/instructions1_11.json";
+  const word: string = "abbababa";
+  const instructionsUrl: string = "./TuringMachine/input/instructions1_11.json";
 
   // 2.12. Г={a,b}. Приписать справа к слову P столько палочек, сколько всего символов входит в P (например: babb → babb||||).
-  const word: string = "babb";
-  const instructionsUrl: string = "./TuringMachine/input/instructions2_12.json";
+  // const word: string = "babb";
+  // const instructionsUrl: string = "./TuringMachine/input/instructions2_12.json";
 
   // Create a Subscription, which will observe each event (ex. move) on the tape
   const subscription: Subscription = turingMachine
@@ -29,6 +29,7 @@ export default () => {
       if (event.type === EventType.TAPE_MOVE) {
         pointArrow.fill(" ", 0, tape.word.length);
         pointArrow[tape.currentIndex] = "↓";
+        console.log(stateManager.currentIndex);
         console.log(pointArrow.join(""));
         console.log(event.payload.tape["_tape"].join(""));
       } else if (event.type === EventType.SYMBOL_READ) {
