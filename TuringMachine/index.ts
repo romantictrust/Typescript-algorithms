@@ -29,7 +29,6 @@ export default () => {
       if (event.type === EventType.TAPE_MOVE) {
         pointArrow.fill(" ", 0, tape.word.length);
         pointArrow[tape.currentIndex] = "↓";
-        console.log(stateManager.currentIndex);
         console.log(pointArrow.join(""));
         console.log(event.payload.tape["_tape"].join(""));
       } else if (event.type === EventType.SYMBOL_READ) {
