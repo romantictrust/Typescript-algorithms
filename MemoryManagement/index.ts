@@ -1,34 +1,101 @@
 import fs from "fs";
 import FF from "./FirstFit";
+import FFS from "./FirstFitSorted";
+import BF from "./BestFit";
+import NF from "./NextFit";
 
 const FILE_PATH = `./MemoryManagement/output/table.txt`;
 
 export default function () {
-  let blockSize: number[] = [100, 500, 200, 300, 600];
-  let processSize: number[] = [212, 417, 112, 426];
+  let blocks: {
+    capacity: number;
+    stored: number;
+    processList: typeof processes;
+  }[] = getFilledBlocks(6, [1, 1]);
+  let processes: {
+    id: number;
+    size: number;
+    isDistributed: boolean;
+  }[] = getFilledProcesses(10, [0, 1]);
 
   fs.createWriteStream(FILE_PATH);
-  outputResults(FF(blockSize, processSize));
+  outputResults(FFS(blocks, processes));
 }
 
-const outputResults = (result: {
-  processSize: number[];
-  allocation: number[];
+const getFilledBlocks = (
+  amount: number,
+  capacityrange: number[],
+  defaultValues?: number[]
+) => {
+  let blocks: {
+    capacity: number;
+    stored: number;
+    processList: [];
+  }[] = [];
+
+  for (let index = 0; index < amount; index++) {
+    blocks.push({
+      capacity: defaultValues
+        ? defaultValues[index]
+        : ~~(
+            Math.random() * (capacityrange[1] - capacityrange[0]) +
+            capacityrange[0]
+          ),
+      stored: 0,
+      processList: [],
+    });
+  }
+  return blocks;
+};
+
+const getFilledProcesses = (
+  amount: number,
+  capacityrange: number[],
+  defaultValues?: number[]
+) => {
+  let processes: { id: number; size: number; isDistributed: boolean }[] = [];
+
+  for (let index = 0; index < amount; index++) {
+    processes.push({
+      id: index,
+      isDistributed: false,
+      size: defaultValues
+        ? defaultValues[index]
+        : +(
+            Math.random() * (capacityrange[1] - capacityrange[0]) +
+            capacityrange[0]
+          ).toFixed(2),
+    });
+  }
+  return processes;
+};
+
+const outputResults = ({
+  blocks,
+  processes,
+}: {
+  blocks: {
+    capacity: number;
+    stored: number;
+    processList: typeof processes;
+  }[];
+  processes: { id: number; size: number; isDistributed: boolean }[];
 }) => {
-  var logger = fs.createWriteStream(FILE_PATH, {
+  let logger = fs.createWriteStream(FILE_PATH, {
     flags: "a", // 'a' means appending (old data will be preserved)
   });
 
-  const tableMargin: string = `\t\t\t\t`;
+  logger.write(`Blocks:\n`);
 
-  logger.write("\nProcess No.\t\tProcess Size\tBlock no.\n");
+  blocks.map((block) => {
+    block.stored = +block.stored.toFixed(2);
+    return logger.write(`${JSON.stringify(block)} \n`);
+  });
 
-  console.log(result.allocation);
-  for (let i = 0; i < result.processSize.length; i++) {
-    logger.write(
-      `${i + 1}${tableMargin}${result.processSize[i]}${tableMargin}${
-        result.allocation[i] != -1 ? result.allocation[i] + 1 : "Not Allocated"
-      }\n`
-    );
-  }
+  logger.write(`\nThose processes were not distributed:\n`);
+
+  processes.map(
+    (process) =>
+      !process.isDistributed && logger.write(`${JSON.stringify(process)} \n`)
+  );
 };
