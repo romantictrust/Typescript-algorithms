@@ -2,6 +2,7 @@ import { performance } from "perf_hooks";
 import fs from "fs";
 import KMP from "./KMP";
 import BM from "./BM";
+import RK from "./RK";
 
 export default function () {
   console.log(">> Program starts <<");
@@ -15,20 +16,28 @@ export default function () {
   const KMPasync = new Promise((resolve) => {
     console.log(`>> KMP starts <<`);
     const startTime: number = performance.now();
-    KMP(fileContentLines, subString);
+    const output = KMP(fileContentLines, subString);
     const endTime: number = performance.now();
-    resolve({ startTime, endTime, name: `KMP` });
+    resolve({ startTime, endTime, name: `KMP`, output });
   });
 
   const BMasync = new Promise((resolve) => {
     console.log(`>> BM starts <<`);
     const startTime: number = performance.now();
-    BM(fileContentLines, subString);
+    const output = BM(fileContentLines, subString);
     const endTime: number = performance.now();
-    resolve({ startTime, endTime, name: `BM` });
+    resolve({ startTime, endTime, name: `BM`, output });
   });
 
-  Promise.all([BMasync, KMPasync]).then((resolve: any) => {
+  const RKasync = new Promise((resolve) => {
+    console.log(`>> RK starts <<`);
+    const startTime: number = performance.now();
+    const output = RK(fileContentLines, subString);
+    const endTime: number = performance.now();
+    resolve({ startTime, endTime, name: `RK`, output });
+  });
+
+  Promise.all([BMasync, KMPasync, RKasync]).then((resolve: any) => {
     resolve.map((performance: any) =>
       console.log(
         `>> ${performance.name} ran for ${~~(

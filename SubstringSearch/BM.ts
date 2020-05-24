@@ -1,4 +1,4 @@
-const MAX_SYMBOLS: number = 9000;
+const ALPHABET_SYMBOLS: number = 9000;
 
 export default function FindSubstring(linesArr: string[], subString: string) {
   let subStringsFound: {
@@ -60,7 +60,7 @@ function badCharHeuristic(subString: string, size: number) {
   let badchar: number[] = [];
 
   // Initialize all occurrences as -1
-  for (i = 0; i < MAX_SYMBOLS; i++) badchar[i] = -1;
+  for (i = 0; i < ALPHABET_SYMBOLS; i++) badchar[i] = -1;
   // Fill the actual value of last occurrence
   // of a character
   for (i = 0; i < size; i++) {
