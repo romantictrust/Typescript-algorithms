@@ -23,13 +23,11 @@ export default function FindSubstring(
     // The value of h would be "pow(d, M-1)%q"
     for (i = 0; i < m - 1; i++) h = (h * APHABET_SYMBOLS) % q;
 
-    // Calculate the hash value of pattern and first
-    // window of text
+    // Calculate the hash value of pattern and first window of text
     for (i = 0; i < m; i++) {
       p = (APHABET_SYMBOLS * p + subString.charCodeAt(i)) % q;
       t = (APHABET_SYMBOLS * t + line.charCodeAt(i)) % q;
     }
-
     // Slide the pattern over text one by one
     for (i = 0; i <= n - m; i++) {
       // Check the hash values of current window of text

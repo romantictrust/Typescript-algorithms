@@ -13,12 +13,8 @@ export default function FindSubstring(linesArr: string[], subString: string) {
     const n: number = linesArr[i].length;
     const line: any = linesArr[i];
 
-    /* Fill the bad character array by calling  
-        the preprocessing function badCharHeuristic()  
-        for given pattern */
-
     let s: number = 0; // s is shift of the pattern with
-    // respect to text
+
     while (s <= n - m) {
       let j: number = m - 1;
 
@@ -40,9 +36,7 @@ export default function FindSubstring(linesArr: string[], subString: string) {
         s += s + m < n ? m - badchar[line.charCodeAt(s + m)] : 1;
         subStringsFound.push({ line: i + 1, index: s - m - 1 });
       } else {
-        s += Math.max(1, j - badchar[line.charCodeAt(s + j)]);
-      }
-      /* Shift the pattern so that the bad character  
+        /* Shift the pattern so that the bad character  
                 in text aligns with the last occurrence of  
                 it in pattern. The max function is used to  
                 make sure that we get a positive shift.  
@@ -50,6 +44,8 @@ export default function FindSubstring(linesArr: string[], subString: string) {
                 occurrence of bad character in pattern  
                 is on the right side of the current  
                 character. */
+        s += Math.max(1, j - badchar[line.charCodeAt(s + j)]);
+      }
     }
   }
   return subStringsFound;
@@ -59,7 +55,6 @@ function badCharHeuristic(subString: string, size: number) {
   let i: number;
   let badchar: number[] = [];
 
-  // Initialize all occurrences as -1
   for (i = 0; i < ALPHABET_SYMBOLS; i++) badchar[i] = -1;
   // Fill the actual value of last occurrence
   // of a character
