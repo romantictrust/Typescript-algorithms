@@ -36,9 +36,7 @@ export default function (
       }
     }
     currentVertex!.colorId = currentColor;
-    verticesLeftUncolored = vertices.filter(
-      (vertex) => vertex.colorId === -1
-    );
+    verticesLeftUncolored = vertices.filter((vertex) => vertex.colorId === -1);
   }
   return vertices;
 }
@@ -52,11 +50,9 @@ function chooseVertexToColor(
   }[],
   verticesLeftUncolored: typeof vertices
 ) {
-  let currentVertex: number = 0;
-
   // Count adjacent vertex color degree for every uncolored vertex
   verticesLeftUncolored.map((vertex) => {
-    let adjacentVerteicesColorDegree: number = 0;
+    let vertexColorsList: number[] = [];
     vertex.edges.map((adjacentVertexId) => {
       let adjacentVertex:
         | {
@@ -66,14 +62,19 @@ function chooseVertexToColor(
             adjacentVerteicesColorDegree?: number;
           }
         | undefined = vertices.find((vertex) => vertex.id === adjacentVertexId);
-      if (adjacentVertex.colorId !== -1) {
-        adjacentVerteicesColorDegree++;
+      let colorIsAlredyPresent = vertexColorsList.find(
+        (color) => adjacentVertex.colorId === color
+      );
+
+      // Check if color is unique and not empty, then add it to the list
+      if (!colorIsAlredyPresent && adjacentVertex.colorId !== -1) {
+        vertexColorsList.push(adjacentVertex.colorId);
       }
     });
-    vertex.adjacentVerteicesColorDegree = adjacentVerteicesColorDegree;
+    vertex.adjacentVerteicesColorDegree = vertexColorsList.length;
   });
 
-  // Sort by adjacent vertex color degree
+  // Sort by adjacent vertex variety color degree
   verticesLeftUncolored.sort((a, b) =>
     (a?.adjacentVerteicesColorDegree ?? 0) <
     (b?.adjacentVerteicesColorDegree ?? 0)
@@ -81,13 +82,13 @@ function chooseVertexToColor(
       : -1
   );
 
-  // Find optimal by adjacent vertex color degree verteices
+  // Find optimal by adjacent vertex variety color degree verteices
   const optimalDegree = verticesLeftUncolored[0].adjacentVerteicesColorDegree;
   const optimalVerteices = verticesLeftUncolored.filter(
     (vertex) => vertex.adjacentVerteicesColorDegree === optimalDegree
   );
 
-  // If there are equaly optimal by adjacent vertex color degree verteices we find optimal by the amount of adjacent vertex
+  // If there are equaly optimal by adjacent vertex variety color degree verteices we find optimal by the amount of adjacent vertex
   if (optimalVerteices.length > 1) {
     optimalVerteices.sort((a, b) => (a.edges.length < b.edges.length ? 1 : -1));
   }

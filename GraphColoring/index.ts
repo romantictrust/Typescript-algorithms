@@ -6,14 +6,14 @@ import DS from "./DSatur";
 import GIS from "./GIS";
 
 // GraphEx1 CircleGraph
-const initialGraphUrl = "./GraphColoring/input/GraphEx1.json";
+const initialGraphUrl = "./GraphColoring/input/CircleGraph.json";
 const outputUrl = "./GraphColoring/output/ColoredGraph.txt";
 
 export default function () {
   const initialGraphJson = fs.readFileSync(initialGraphUrl, "utf8");
   const initialGraph = JSON.parse(initialGraphJson);
   // const matrix = formMatrix(initialGraph);
-  const result = Greedy(initialGraph.vertices);
+  const result = GIS(initialGraph.vertices);
   writeResult(result);
 }
 
