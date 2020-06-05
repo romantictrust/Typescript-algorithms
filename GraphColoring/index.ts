@@ -6,7 +6,7 @@ import DS from "./DSatur";
 import GIS from "./GIS";
 
 // GraphEx1 CircleGraph
-const initialGraphUrl = "./GraphColoring/input/CircleGraph.json";
+const initialGraphUrl = "./GraphColoring/input/GraphEx1.json";
 const outputUrl = "./GraphColoring/output/ColoredGraph.txt";
 
 export default function () {

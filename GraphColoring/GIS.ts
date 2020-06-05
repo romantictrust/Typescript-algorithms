@@ -44,7 +44,7 @@ function chooseVertexToColor(
   verticesLeftUncolored: typeof vertices,
   previousColor: number
 ) {
-  // Count adjacent vertex color degree for every uncolored vertex
+  // Check if adj to current vertices is not the same color as current
   if (vertices.length !== verticesLeftUncolored.length) {
     let optimalVerteicesList: typeof vertices = [];
     verticesLeftUncolored.map((vertex) => {
@@ -52,18 +52,20 @@ function chooseVertexToColor(
         let adjacentVertex = vertices.find((v) => v.id === adjacentVertexId);
         return adjacentVertex.colorId === previousColor;
       });
-      if (isOptimalVertex === undefined)
-        optimalVerteicesList.push(vertex);
+      if (isOptimalVertex === undefined) optimalVerteicesList.push(vertex);
     });
 
+    // Vertex with lowest degree of adj vertices
     let optimalVertex = optimalVerteicesList.sort((a, b) =>
       a.edges.length > b.edges.length ? 1 : -1
     )[0];
 
+    // If such a vertex exists we send it to color, otherwise wi change color
     if (!!optimalVertex)
       return { vertexId: optimalVertex.id, changeColor: false };
     else return { vertexId: -1, changeColor: true };
   } else {
+    // Case for non-colored graph
     let minimalAdjDegreeVertex = verticesLeftUncolored.sort((a, b) =>
       a.edges.length > b.edges.length ? 1 : -1
     )[0].id;
